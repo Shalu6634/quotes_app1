@@ -20,7 +20,7 @@ class Homepage extends StatelessWidget {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/img/background/bg1.jpeg')),
+                image: AssetImage('assets/img/background/bg5.jpg')),
             color: Color(0xFF3B3B3D)),
         child: Obx(
           () => PageView.builder(
@@ -32,6 +32,7 @@ class Homepage extends StatelessWidget {
                 SelectableText(
                   quoteController.dataList[index]['quote'],
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: height * 0.025,
                     fontWeight: FontWeight.w500,
                   ),
@@ -46,6 +47,7 @@ class Homepage extends StatelessWidget {
                     SelectableText(
                       '~ ${quoteController.dataList[index]['author']}',
                       style: TextStyle(
+                        color: Colors.white,
                         fontFamily: 'chocolate',
                         fontSize: height * 0.024,
                         fontWeight: FontWeight.w600,
@@ -53,7 +55,35 @@ class Homepage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ],
-                )
+                ),
+                Obx(
+                  () => IconButton(
+                    onPressed: () {
+                      if (quoteController.dataList[index]['like'] == 0) {
+                        quoteController.favourite(
+                            1, quoteController.dataList[index]['id']);
+                      } else {
+                        quoteController.favourite(
+                            0,quoteController.dataList[index]['id']);
+                      }
+                      quoteController.dataList.add(
+                        quoteController.dataList[selectedIndex]['quote'],
+                      );
+
+                    },
+                    icon: quoteController.dataList[index]['like'] == 0
+                        ? const Icon(
+                            Icons.favorite_border,
+                            color: Colors.white,
+                            size: 29,
+                          )
+                        : const Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                            size: 29,
+                          ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -37,7 +37,8 @@ class QuotesHelper {
           category TEXT,
           quote TEXT,
           author TEXT,
-          description TEXT
+          description TEXT,
+          like INTEGER
         );''';
         await db.execute(sql);
       },
@@ -45,13 +46,13 @@ class QuotesHelper {
     return _db!;
   }
 
-  Future<void> insertData(String category,String quote,String author,String description)
+  Future<void> insertData(String category,String quote,String author,String description,int like)
   async {
     Database? db = await database;
     String sql='''
-    INSERT INTO quoteData(category,quote,author,description) VALUES(?,?,?,?);
+    INSERT INTO quoteData(category,quote,author,description,like) VALUES(?,?,?,?,?);
     ''';
-    List args=[category,quote,author,description];
+    List args=[category,quote,author,description,like];
     await db!.rawInsert(sql,args);
   }
 
@@ -61,5 +62,17 @@ class QuotesHelper {
     SELECT * FROM quoteData;
     ''';
     return await db!.rawQuery(sql);
+  }
+
+  Future<void> updateData(int like,int id)
+  async {
+    Database? db=await database;
+    String sql='''
+  UPDATE quoteData
+  SET like = ? 
+  WHERE id = ?;
+  ''';
+    List args=[like,id];
+    await db!.rawUpdate(sql,args);
   }
 }

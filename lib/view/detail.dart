@@ -33,40 +33,7 @@ class QuoteScreen extends StatelessWidget {
               fontFamily: 'OFL'),
         ),
       ),
-      body: PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: quoteController.dataList[selectedIndex].length,
-        itemBuilder: (context, index) => Container(
-          padding: EdgeInsets.all(40),
-          decoration: BoxDecoration(
-              image: DecorationImage(fit: BoxFit.cover,
-                  image: AssetImage(bgList[selectedIndex]['bg'])),
-              color: Color(0xFF3B3B3D)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
 
-          SelectableText(
-          quoteController.dataList[index]['quote'].toString(),
-            style: TextStyle(
-                fontSize: height * 0.025,
-                fontWeight: FontWeight.w500,
-                color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-          SelectableText(
-            '~ ${quoteController.dataList[index]['author'].toString()}',
-            style: TextStyle(
-                fontFamily: 'chocolate',
-                fontSize: height * 0.024,
-                fontWeight: FontWeight.w600,
-                color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
