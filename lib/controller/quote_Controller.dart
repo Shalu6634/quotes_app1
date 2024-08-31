@@ -26,24 +26,33 @@ class QuoteController extends GetxController {
   Future<void> initDb() async {
     await QuotesHelper.quotesHelper.database;
   }
-
+  void favourite(int like,int id)
+  {
+    QuotesHelper.quotesHelper.updateData(like, id);
+    getData();
+  }
   Future<RxList> getData() async {
     fromAllData();
     dataList.value = await QuotesHelper.quotesHelper.readData();
     return dataList;
   }
 
+
+
+
+
   void fromAllData() async {
     final  data =
         await QuotesHelper.quotesHelper.fetchData();
     quotesModal = QuotesModal.fromMap(data!);
-     print("${quotesModal.quotes.length}");
+
     for (int i = 0; i < quotesModal.quotes.length; i++) {
       QuotesHelper.quotesHelper.insertData(
           quotesModal.quotes[i].category,
           quotesModal.quotes[i].quote,
           quotesModal.quotes[i].author,
-          quotesModal.quotes[i].description);
+          quotesModal.quotes[i].description,0);
     }
   }
+
 }
