@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes_app/view/detail.dart';
+import 'package:quotes_app/view/favouritePage.dart';
+import 'package:quotes_app/view/Quote.dart';
 import 'package:quotes_app/view/homepage.dart';
 import 'package:quotes_app/view/splashScreen.dart';
 
@@ -18,8 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       getPages: [
           //GetPage(name: '/', page: () => SplashScreen(),),
-          GetPage(name: '/', page: () => Homepage(),),
-          GetPage(name: '/detail', page: () => QuoteScreen(),),
+          GetPage(name: '/', page: () => const SplashScreen(),),
+          GetPage(name: '/quote', page: () => const QuoteScreen(),),
+          GetPage(name: '/fav', page: () => const FavouritePage(),),
+
       ],
     );
   }

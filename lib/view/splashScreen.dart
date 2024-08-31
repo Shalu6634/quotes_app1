@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:quotes_app/view/homepage.dart';
+
+import '../controller/quote_Controller.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -7,6 +12,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+    QuoteController quoteController = Get.put(QuoteController());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -34,17 +40,23 @@ class SplashScreen extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          Container(
-            height: h * 0.080,
-            width: w * 0.4,
-            decoration: BoxDecoration(
-                color: Colors.redAccent.shade100,
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-                child: const Text(
-                  "Next",
-                  style: TextStyle(color: Colors.white, fontSize: 23),
-                )),
+          GestureDetector(
+            onTap: (){
+              quoteController.getData();
+              Get.to(Homepage());
+            },
+            child: Container(
+              height: h * 0.080,
+              width: w * 0.4,
+              decoration: BoxDecoration(
+                  color: Colors.redAccent.shade100,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Center(
+                  child: const Text(
+                    "Next",
+                    style: TextStyle(color: Colors.white, fontSize: 23),
+                  )),
+            ),
           )
         ],
       ),

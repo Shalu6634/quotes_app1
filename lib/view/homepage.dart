@@ -17,7 +17,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white70,
           ),
@@ -38,7 +38,7 @@ class Homepage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon:const  Icon(
                 Icons.notifications,
                 color: Colors.yellow,
               )),
@@ -175,7 +175,7 @@ class Homepage extends StatelessWidget {
                 style: TextStyle(
                     letterSpacing: height * 0.0005,
                     color: Colors.black,
-                    fontFamily: 'chocolate',
+                    fontFamily: 'popines',
                     fontSize: height * 0.024,
                     fontWeight: FontWeight.bold),
               ),
@@ -194,7 +194,7 @@ class Homepage extends StatelessWidget {
                         selectedIndex = index;
                         quote = quoteController.dataList[index]['category'];
                         print(quote);
-                        Get.toNamed('/detail');
+                        Get.toNamed('/quote');
                       },
                       child: Container(
                         height: height * 0.160,

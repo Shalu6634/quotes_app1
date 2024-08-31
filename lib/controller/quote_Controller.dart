@@ -1,7 +1,11 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:quotes_app/helper/quote_helper.dart';
 import 'package:quotes_app/modal/quote_modal.dart';
+
+import 'favourite_controller.dart';
 
 class QuoteController extends GetxController {
   // ApiHelper apiHelper = ApiHelper();
@@ -16,10 +20,12 @@ class QuoteController extends GetxController {
   late QuotesModal quotesModal;
   RxList dataList = [].obs;
 
+
   @override
   void onInit() {
     super.onInit();
-    getData();
+
+  //  getData();
     initDb();
   }
 
@@ -38,9 +44,6 @@ class QuoteController extends GetxController {
   }
 
 
-
-
-
   void fromAllData() async {
     final  data =
         await QuotesHelper.quotesHelper.fetchData();
@@ -53,6 +56,18 @@ class QuoteController extends GetxController {
           quotesModal.quotes[i].author,
           quotesModal.quotes[i].description,0);
     }
+  }
+
+  Future<RxList> showFolderData(String category)
+  async {
+     dataList.value=await QuotesHelper.quotesHelper.showFolderData(category);
+    return dataList;
+  }
+
+  void deleteData(String quote,String author)
+  {
+    QuotesHelper.quotesHelper.removeData(quote, author);
+
   }
 
 }

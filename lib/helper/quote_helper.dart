@@ -75,4 +75,24 @@ class QuotesHelper {
     List args=[like,id];
     await db!.rawUpdate(sql,args);
   }
+
+  Future showFolderData(String category)
+  async {
+    Database? db=await database;
+    String sql='''
+    SELECT * FROM quoteData WHERE  category=? AND like=1
+    ''';
+    List args=[category];
+    return await db!.rawQuery(sql,args);
+  }
+
+  Future<void> removeData(String quote,String author)
+  async {
+    Database? db=await database;
+    String sql='''
+    DELETE FROM quoteData WHERE quote=? AND author=?;
+    ''';
+    List args=[quote,author];
+    await db!.rawDelete(sql,args);
+  }
 }
