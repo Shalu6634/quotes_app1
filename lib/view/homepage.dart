@@ -5,6 +5,7 @@ import 'package:quotes_app/modal/quote_modal.dart';
 import 'package:quotes_app/utils/imageList/list.dart';
 
 import '../utils/global.dart';
+import 'detail.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -55,7 +56,9 @@ class Homepage extends StatelessWidget {
               margin: EdgeInsets.only(bottom: height * 0.020),
               decoration: BoxDecoration(
                 color: Colors.grey,
-                image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/img/images/cate.jpg')),
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/img/images/cate.jpg')),
                 borderRadius: BorderRadius.circular(height * 0.015),
               ),
             ),
@@ -66,7 +69,7 @@ class Homepage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/category');
+                        Navigator.of(context).pushNamed('/detail');
                       },
                       child: Container(
                         height: height * 0.065,
@@ -184,13 +187,14 @@ class Homepage extends StatelessWidget {
               height: height * 0.010,
             ),
             Expanded(
-              child: GridView.builder(itemCount: imageList.length,
+              child: GridView.builder(
+                itemCount: imageList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 itemBuilder: (context, index) => Column(
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         selectedIndex = index;
                         quote = quoteController.dataList[index]['category'];
                         print(quote);
@@ -203,10 +207,9 @@ class Homepage extends StatelessWidget {
                           top: height * 0.020,
                         ),
                         decoration: BoxDecoration(
-
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                            fit: BoxFit.cover,
+                              fit: BoxFit.cover,
                               image: AssetImage(imageList[index]['img'])),
                         ),
                       ),
@@ -229,4 +232,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-

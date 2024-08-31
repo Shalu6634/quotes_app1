@@ -11,58 +11,69 @@ class QuoteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     QuoteController quoteController = Get.put(QuoteController());
-
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: Text(
-          '${quote} Status',
-          style: TextStyle(
-              letterSpacing: height * 0.0007,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'OFL'),
-        ),
-      ),
-      body: PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: quoteController.dataList[selectedIndex].length,
-        itemBuilder: (context, index) => Container(
-          padding: EdgeInsets.all(40),
-          decoration: BoxDecoration(
-              image: DecorationImage(fit: BoxFit.cover,
-                  image: AssetImage(bgList[selectedIndex]['bg'])),
-              color: Color(0xFF3B3B3D)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+      body: Container(
+        padding: const EdgeInsets.all(40),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                opacity: 0.4,
+                fit: BoxFit.cover,
+                image: AssetImage('assets/img/background/bg10.jpeg')),
+            color: Color(0xFF3B3B3D)),
+        child: Obx(
+          () => PageView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: quoteController.dataList.length,
+            itemBuilder: (context, index) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 40,
+                      width: 100,
 
-          SelectableText(
-          quoteController.dataList[index]['quote'].toString(),
-            style: TextStyle(
-                fontSize: height * 0.025,
-                fontWeight: FontWeight.w500,
-                color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-          SelectableText(
-            '~ ${quoteController.dataList[index]['author'].toString()}',
-            style: TextStyle(
-                fontFamily: 'chocolate',
-                fontSize: height * 0.024,
-                fontWeight: FontWeight.w600,
-                color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-            ],
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(color: Colors.white12,
+
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Text(quoteController.dataList[index]['category'],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                    ),
+
+                  ],
+                ),
+                Spacer(),
+                SelectableText(
+                  quoteController.dataList[index]['quote'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: height * 0.025,
+                    fontWeight: FontWeight.w500,fontFamily: 'noto'
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SelectableText(
+                      '~ ${quoteController.dataList[index]['author']}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'chocolate',
+                        fontSize: height * 0.024,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Spacer(),
+              ],
+            ),
           ),
         ),
       ),
