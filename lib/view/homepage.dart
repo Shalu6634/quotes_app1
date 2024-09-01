@@ -25,7 +25,7 @@ class Homepage extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        backgroundColor: Color(0xFF2D2D2D),
+        backgroundColor: Colors.blue,
         title: Text(
           'Status & Quotes',
           style: TextStyle(
