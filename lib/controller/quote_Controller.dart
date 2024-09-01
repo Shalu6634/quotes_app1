@@ -11,7 +11,7 @@ class QuoteController extends GetxController {
   late QuotesModal quotesModal;
   RxList dataList = [].obs;
   RxInt bgIndex=0.obs;
-
+  RxInt selectedIndex=0.obs;
 
   Future<void> initDb() async {
     await QuotesHelper.quotesHelper.database;
