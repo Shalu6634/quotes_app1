@@ -16,29 +16,20 @@ class Homepage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white70,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xfff85836),
         title: Text(
           'Status & Quotes',
           style: TextStyle(
               color: Colors.white,
               letterSpacing: height * 0.001,
-              fontFamily: 'OFL',
+              fontFamily: 'popines',
               fontWeight: FontWeight.w600,
               fontSize: height * 0.027),
         ),
         actions: [
           IconButton(
               onPressed: () {},
-              icon:const  Icon(
+              icon: const Icon(
                 Icons.notifications,
                 color: Colors.yellow,
               )),
@@ -55,7 +46,9 @@ class Homepage extends StatelessWidget {
               margin: EdgeInsets.only(bottom: height * 0.020),
               decoration: BoxDecoration(
                 color: Colors.grey,
-                image: DecorationImage(fit: BoxFit.cover,image: AssetImage('assets/img/images/cate.jpg')),
+                image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/img/images/cate.jpg')),
                 borderRadius: BorderRadius.circular(height * 0.015),
               ),
             ),
@@ -73,7 +66,7 @@ class Homepage extends StatelessWidget {
                         width: width * 0.140,
                         margin: EdgeInsets.only(bottom: height * 0.007),
                         decoration: BoxDecoration(
-                          color: Color(0xFFA15485),
+                          color: const Color(0xFFA15485),
                           borderRadius: BorderRadius.circular(height * 0.010),
                         ),
                         child: Icon(
@@ -98,7 +91,7 @@ class Homepage extends StatelessWidget {
                       width: width * 0.140,
                       margin: EdgeInsets.only(bottom: height * 0.007),
                       decoration: BoxDecoration(
-                        color: Color(0xFFB78F42),
+                        color: const Color(0xFFB78F42),
                         borderRadius: BorderRadius.circular(height * 0.010),
                       ),
                       child: Icon(
@@ -122,7 +115,7 @@ class Homepage extends StatelessWidget {
                       width: width * 0.140,
                       margin: EdgeInsets.only(bottom: height * 0.007),
                       decoration: BoxDecoration(
-                        color: Color(0xFF7488C6),
+                        color: const Color(0xFF7488C6),
                         borderRadius: BorderRadius.circular(height * 0.010),
                       ),
                       child: Icon(
@@ -184,13 +177,14 @@ class Homepage extends StatelessWidget {
               height: height * 0.010,
             ),
             Expanded(
-              child: GridView.builder(itemCount: imageList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              child: GridView.builder(
+                itemCount: imageList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 itemBuilder: (context, index) => Column(
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         selectedIndex = index;
                         quote = quoteController.dataList[index]['category'];
                         print(quote);
@@ -203,10 +197,9 @@ class Homepage extends StatelessWidget {
                           top: height * 0.020,
                         ),
                         decoration: BoxDecoration(
-
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                            fit: BoxFit.cover,
+                              fit: BoxFit.cover,
                               image: AssetImage(imageList[index]['img'])),
                         ),
                       ),
@@ -229,4 +222,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-

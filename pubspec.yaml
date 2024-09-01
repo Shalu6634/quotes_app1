@@ -39,6 +39,7 @@ dependencies:
   http: ^1.2.2
   google_fonts: ^6.2.1
   sqflite: ^2.3.3+1
+  image_gallery_saver: ^2.0.3
 
 
 

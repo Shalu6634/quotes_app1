@@ -86,13 +86,13 @@ class QuotesHelper {
     return await db!.rawQuery(sql,args);
   }
 
-  Future<void> removeData(String quote,String author)
+  Future<void> removeData(int id)
   async {
     Database? db=await database;
     String sql='''
-    DELETE FROM quoteData WHERE quote=? AND author=?;
+    DELETE FROM quoteData WHERE id=?;
     ''';
-    List args=[quote,author];
+    List args=[id];
     await db!.rawDelete(sql,args);
   }
 }

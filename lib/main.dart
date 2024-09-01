@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quotes_app/view/favouritePage.dart';
 import 'package:quotes_app/view/Quote.dart';
 import 'package:quotes_app/view/homepage.dart';
+import 'package:quotes_app/view/splash.dart';
 import 'package:quotes_app/view/splashScreen.dart';
 
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: [
-          //GetPage(name: '/', page: () => SplashScreen(),),
+          // GetPage(name: '/', page: () => Splash(),),
           GetPage(name: '/', page: () => const SplashScreen(),),
           GetPage(name: '/home', page: () => const Homepage(),),
           GetPage(name: '/quote', page: () => const QuoteScreen(),),

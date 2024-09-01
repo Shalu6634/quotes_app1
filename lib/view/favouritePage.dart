@@ -17,49 +17,63 @@ class FavouritePage extends StatelessWidget {
     FavouriteController favouriteController = Get.put(FavouriteController());
     QuoteController quoteController = Get.put(QuoteController());
 
-    void backPage()
-    {
-      Timer(const Duration(milliseconds:500), () {
+    void backPage() {
+      Timer(const Duration(milliseconds: 500), () {
         Get.back();
       });
     }
-    return Scaffold(backgroundColor: Colors.black,
+
+    return Scaffold(
+
       appBar: AppBar(
-centerTitle: true,
-        leading: IconButton(onPressed: (){
-          quoteController.getData();
-          backPage();
-        }, icon: Icon(Icons.arrow_back_ios)),
-        backgroundColor: Colors.blue,
+        centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              quoteController.getData();
+              backPage();
+            },
+            icon: Icon(Icons.arrow_back_ios)),
+        backgroundColor: Color(0xfff56440),
         title: const Text(
           'Favourite Quotes',
           style: TextStyle(
-              fontFamily: 'popines', fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),
+              fontFamily: 'popines',
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.white),
         ),
       ),
       body: GridView.builder(
         itemCount: favouriteController.categoriesList.length,
-
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) => GestureDetector(
-          onTap: ()
-          {
-            quoteController.showFolderData(favouriteController.categoriesList[index]);
-            Get.to(LikedPage(),);
+          onTap: () {
+            quoteController
+                .showFolderData(favouriteController.categoriesList[index]);
+            Get.to(
+              const LikedPage(),
+            );
           },
           child: Container(
             height: 100,
             width: 100,
             margin: EdgeInsets.all(15),
-            decoration:  BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.blue,
-                Colors.blueAccent,
-              ]),
-                borderRadius: BorderRadius.circular(10)
-            ),
-            child: Center(child: Text('${favouriteController.categoriesList[index]}',style: TextStyle(fontFamily: 'noto',color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold),)),
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Color(0xfff85836),
+                  Color(0xfff37c5f),
+                ]),
+                borderRadius: BorderRadius.circular(10)),
+            child: Center(
+                child: Text(
+              '${favouriteController.categoriesList[index]}',
+              style: TextStyle(
+                  fontFamily: 'noto',
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
+            )),
           ),
         ),
       ),

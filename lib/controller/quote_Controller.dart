@@ -8,26 +8,10 @@ import 'package:quotes_app/modal/quote_modal.dart';
 import 'favourite_controller.dart';
 
 class QuoteController extends GetxController {
-  // ApiHelper apiHelper = ApiHelper();
-  // Rx<QuotesModal?> quotesModal = Rx<QuotesModal?>(null);
-  //
-  // Future<void> fetchData()
-  // async {
-  //   final data = await apiHelper.apiHelper();
-  //   quotesModal.value = QuotesModal.fromMap(data);
-  // }
-
   late QuotesModal quotesModal;
   RxList dataList = [].obs;
   RxInt bgIndex=0.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-
-  //  getData();
-    initDb();
-  }
 
   Future<void> initDb() async {
     await QuotesHelper.quotesHelper.database;
@@ -64,10 +48,9 @@ class QuoteController extends GetxController {
     return dataList;
   }
 
-  void deleteData(String quote,String author)
+  void deleteData(int id)
   {
-    QuotesHelper.quotesHelper.removeData(quote, author);
-
+    QuotesHelper.quotesHelper.removeData(id);
   }
 
 }
