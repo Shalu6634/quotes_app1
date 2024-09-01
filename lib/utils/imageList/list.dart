@@ -42,6 +42,8 @@ List bgList=[
   {'bg': 'assets/img/background/bg9.jpg'},
   {'bg': 'assets/img/background/bg10.jpeg'},
   {'bg': 'assets/img/images/inspirational.jpeg'},
-  {'bg': 'assets/img/images/inspirational.jpeg'},
-  {'bg': 'assets/img/images/inspirational.jpeg'},
+  {'bg': 'assets/img/background/bg12.jpg'},
+
+  {'bg': 'assets/img/background/bg11.jpg'},
 ];
+String image='';

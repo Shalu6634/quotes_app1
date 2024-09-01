@@ -215,7 +215,7 @@ class Homepage extends StatelessWidget {
                       '${quoteController.dataList[index]['category']} Status',
                       style: TextStyle(
                           color: Colors.black,
-                          fontFamily: 'OFL',
+                          fontFamily: 'noto',
                           fontWeight: FontWeight.w600,
                           fontSize: height * 0.020),
                     ),

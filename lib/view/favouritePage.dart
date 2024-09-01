@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quotes_app/utils/global.dart';
@@ -22,17 +23,18 @@ class FavouritePage extends StatelessWidget {
         Get.back();
       });
     }
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.black,
       appBar: AppBar(
+centerTitle: true,
         leading: IconButton(onPressed: (){
           quoteController.getData();
           backPage();
         }, icon: Icon(Icons.arrow_back_ios)),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         title: const Text(
           'Favourite Quotes',
           style: TextStyle(
-              fontFamily: 'popines', fontWeight: FontWeight.bold, fontSize: 20),
+              fontFamily: 'popines', fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),
         ),
       ),
       body: GridView.builder(
@@ -50,10 +52,14 @@ class FavouritePage extends StatelessWidget {
             height: 100,
             width: 100,
             margin: EdgeInsets.all(15),
-            decoration: const BoxDecoration(
-              color: Colors.blue,
+            decoration:  BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Colors.blue,
+                Colors.blueAccent,
+              ]),
+                borderRadius: BorderRadius.circular(10)
             ),
-            child: Text('${favouriteController.categoriesList[index]}',style: TextStyle(color: Colors.white),),
+            child: Center(child: Text('${favouriteController.categoriesList[index]}',style: TextStyle(fontFamily: 'noto',color: Colors.white,fontSize: 22,fontWeight: FontWeight.bold),)),
           ),
         ),
       ),

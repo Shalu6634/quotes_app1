@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       getPages: [
           //GetPage(name: '/', page: () => SplashScreen(),),
           GetPage(name: '/', page: () => const SplashScreen(),),
+          GetPage(name: '/home', page: () => const Homepage(),),
           GetPage(name: '/quote', page: () => const QuoteScreen(),),
           GetPage(name: '/fav', page: () => const FavouritePage(),),
 
