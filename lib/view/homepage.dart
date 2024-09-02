@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quotes_app/controller/quote_Controller.dart';
-import 'package:quotes_app/modal/quote_modal.dart';
 import 'package:quotes_app/utils/imageList/list.dart';
 
 import '../utils/global.dart';

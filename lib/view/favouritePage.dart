@@ -1,9 +1,7 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes_app/utils/global.dart';
+
 import 'package:quotes_app/view/likePage.dart';
 
 import '../controller/favourite_controller.dart';

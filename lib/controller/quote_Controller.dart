@@ -1,18 +1,44 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:quotes_app/helper/quote_helper.dart';
 import 'package:quotes_app/modal/quote_modal.dart';
-
-import 'favourite_controller.dart';
 
 class QuoteController extends GetxController {
   late QuotesModal quotesModal;
   RxList dataList = [].obs;
+  Rx<Color> chooseColor = Colors.white.obs;
   RxInt bgIndex=0.obs;
+  RxString font='popines'.obs;
+  Rx<TextAlign> txtAlign=TextAlign.center.obs;
+  RxInt size=18.obs;
+  RxInt changeValue=0.obs;
   RxInt selectedIndex=0.obs;
-
+  Rx<CrossAxisAlignment> alignSet = CrossAxisAlignment.center.obs;
+  RxList<Color> color=<Color>[
+    Colors.white,
+    Colors.blue,
+    Colors.red,
+    Colors.indigo,
+    Colors.pink,
+    Colors.green,
+    Colors.yellow,
+    Colors.teal,
+    Colors.blueAccent,
+    Colors.brown,
+    Colors.lime,
+    Colors.lightBlue,
+  ].obs;
+  RxList chooseFonts= [
+    'bold',
+    'popines',
+    'noto',
+    'italic',
+    'crackWord',
+    'dance',
+    'shadow'
+  ] .obs;
   Future<void> initDb() async {
     await QuotesHelper.quotesHelper.database;
   }

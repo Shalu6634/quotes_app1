@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:quotes_app/controller/quote_Controller.dart';
 import 'package:quotes_app/helper/favourite_helper.dart';
 
